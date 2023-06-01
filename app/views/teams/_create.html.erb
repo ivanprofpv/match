@@ -1,0 +1,8 @@
+<%= form_with model: @team, local: true do |f| %>
+
+  <%= f.text_field :name %>
+  <label">Название команды</label>
+
+  <%= f.submit "Create" %>
+
+<% end %>

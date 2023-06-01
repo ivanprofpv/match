@@ -1,0 +1,10 @@
+<h1>Показатели игрока <%= @player.name %></h1>
+
+
+<% if @player.player_achieved_in_last_5_games?(@player, @team, @achivment) %>
+  <p>Игрок выполнил показатель "<%= @achivment.name %>" за последние 5 игр!</p>  
+<% else %>
+  <p>Игрок не выполнил ни один показатель за последние 5 игр!</p>
+<% end %>
+
+

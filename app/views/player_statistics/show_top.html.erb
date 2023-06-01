@@ -1,0 +1,27 @@
+<br>
+
+<%= form_tag '', method: :get do %>
+  <%= label_tag :achivment_id, 'Показатель:' %>
+  <%= select_tag :achivment_id, options_from_collection_for_select(Achivment.all, :id, :name) %>
+  
+  <%= label_tag :team_id, 'Команда:' %>
+<%= select_tag :team_id, options_for_select([['', nil]] + Team.all.map { |t| [t.name, t.id] }) %>
+  
+  <%= submit_tag 'Показать' %>
+<% end %>
+
+<% if @achivment.present? %>
+  <p>Показатель: <%= @achivment.name %></p>
+<% end %>
+
+<% if @team.present? %>  
+  <p>Команда: <%= @team.name %></p>
+<% end %>   
+
+<% if @players %>
+  <ul>
+    <% @players.each do |player| %>
+      <li><%= player.name %> - <%= player.player_statistics.where(achivment_id: @achivment.id).count %> раз(а)</li>
+    <% end %> 
+  </ul>
+<% end %>

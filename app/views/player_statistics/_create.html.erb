@@ -1,0 +1,15 @@
+<%= form_for @player_statistic do |f| %>
+  <%= f.label :player_id %>
+  <%= f.collection_select :player_id, Player.all, :id, :name %>
+  
+  <%= f.label :game_id %>
+  <%= f.collection_select :game_id, Game.all, :id, :name %>
+  
+  <%= f.label :achivment_id %>
+  <%= f.collection_select :achivment_id, Achivment.all, :id, :name %>
+
+  <%= f.label :team_id %>
+  <%= f.collection_select :team_id, Team.all, :id, :name %>
+  
+  <%= f.submit "Засчитать статистику" %> 
+<% end %>

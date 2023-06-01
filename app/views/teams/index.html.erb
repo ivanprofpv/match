@@ -1,0 +1,35 @@
+<hr>
+
+<h2>Игроки</h2>
+<% @players.each do |player| %>
+  <li><%= link_to player.name, player_path(player) %>, команда: <%= player.team.name %>.</li>
+<% end %>
+<hr>
+
+<br>
+<h2>Команды</h2>
+<% @teams.each do |team| %>
+  <li><%= team.name %></li>
+<% end %>
+<hr>
+
+<br>
+<h2>Матчи</h2>
+<% @games.each do |game| %>
+  <li><%= game.name %>, участвует команда: <%= game.team.name %></li>
+  <% game.team.players.each do |player| %>
+    <% player_stat = PlayerStatistic.find_by(game: game, player: player) %>  
+    <% if player_stat %>  
+      <li> - Игрок <%= player.name %> выполнил показатель  
+      <%= player_stat.achivment.name %></li>
+    <% end %>
+  <% end %>
+  <br>
+<% end %>
+<hr>
+
+<br>
+<h2>Показатели</h2>
+<% @achivments.each do |achivment| %>
+  <li><%= achivment.name %></li>
+<% end %>

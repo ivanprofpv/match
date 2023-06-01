@@ -1,0 +1,11 @@
+<%= form_with model: @player, local: true do |f| %>
+
+  <%= f.text_field :name %>
+  <label>Имя игрока</label>
+
+  <%= f.collection_select(:team_id, Team.all, :id, :name,
+                             {prompt: "Выберите команду игрока"}, class: "form-select", id: "autoSizingSelect") %>
+
+  <%= f.submit "Create" %>
+
+<% end %>
